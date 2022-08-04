@@ -167,5 +167,6 @@ function validationScale() {
     div1.getElementsByTagName("input")[0].value = 0;
     div1.getElementsByTagName("input")[1].value = 0;
     platform.prop("selectedIndex",0);
+    $("#essentialScale").prop("checked",false);
     $("#highScale").prop("checked",true);
 }
