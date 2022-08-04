@@ -164,13 +164,8 @@ function validationScale() {
         info.innerHTML = string;
     }
     
-    div1.getElementsByTagName("input")[0].value = "";
-    div1.getElementsByTagName("input")[1].value = "";
-    var selectedIndex = platform.prop("selectedIndex");
-    if (selectedIndex > 0) {
-        platform.prop("selectedIndex", 0);
-    }
-    if(($("#highScale").prop("checked"))==false){
-        $("#highScale").prop("checked",true);
-    }
+    div1.getElementsByTagName("input")[0].value = 0;
+    div1.getElementsByTagName("input")[1].value = 0;
+    platform.prop("selectedIndex",0);
+    $("#highScale").prop("checked",true);
 }
