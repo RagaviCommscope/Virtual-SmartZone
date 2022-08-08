@@ -117,22 +117,46 @@ function validationScale() {
 
         } else if (platformText === "Microsoft Azure") {
             if (total >= 1 && total <= 100) {
-                string = "<br/>DS11_v2 (2 vCPU / 14GB RAM)<br />or<br/>D4s_v3 (4 vCPU / 16GB RAM)";
+                string = "";
+                cpu = "DS11_v2 (2 Logic Processor)<br />or<br />D4s_v3 (4 Logic Processor)";
+                ram = "14GB<br />or<br />16GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 101 && total <= 500) {
-                string = "<br/>D4s_v3 (4 vCPU / 16GB RAM)";
+                string = "";
+                cpu = "D4s_v3 (4 Logic Processor)";
+                ram = "16GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 501 && total <= 1000) {
-                string = "<br/>E4s_v3 (4 vCPU / 32GB RAM)";
+                string = "";
+                cpu = "E4s_v3 (4 Logic Processor)";
+                ram = "32GB";
+                disk = "150GB";
+                diskIo = "20MiB/s";
             }
             else if (total >= 1001 && total <= 3000) {
-                string = "<br/>D8s_v3 (8 vCPU / 32GB RAM)";
+                string = "";
+                cpu = "D8s_v3 (8 Logic Processor)";
+                ram = "32GB";
+                disk = "300GB";
+                diskIo = "25MiB/s";
             }
             else if (total >= 3001 && total <= 6000) {
-                string = "<br/>F16s_v2 (16 vCPU / 32GB RAM)";
+                string = "";
+                cpu = "F16s_v2 (16 Logic Processor)";
+                ram = "32GB";
+                disk = "300GB";
+                diskIo = "35MiB/s";
             }
             else if (total >= 6001 && total <= 10000) {
-                string = "<br/>F32s_v2 (32 vCPU / 64GB RAM)";
+                string = "";
+                cpu = "F32s_v2 (32 Logic Processor)";
+                ram = "64GB";
+                disk = "600GB";
+                diskIo = "45MiB/s";
             }
             else {
                 string = "<br/>No data found";
@@ -140,22 +164,46 @@ function validationScale() {
 
         } else if (platformText === "Amazon Web Service") {
             if (total >= 1 && total <= 100) {
-                string = "<br/>r5.large (2 vCPU / 16GB RAM)";
+                string = "";
+                cpu = "r5.large (2 Logic Processor)";
+                ram = "16GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 101 && total <= 500) {
-                string = "<br/>m5.xlarge (4 vCPU / 16GB RAM)";
+                string = "";
+                cpu = "m5.xlarge (4 Logic Processor)";
+                ram = "16GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 501 && total <= 1000) {
-                string = "<br/>r5.xlarge (4 vCPU / 32GB RAM)";
+                string = "";
+                cpu = "r5.xlarge (4 Logic Processor)";
+                ram = "32GB";
+                disk = "150GB";
+                diskIo = "20MiB/s";
             }
             else if (total >= 1001 && total <= 3000) {
-                string = "<br/>m5.2xlarge (8 vCPU / 32GB RAM)";
+                string = "";
+                cpu = "m5.2xlarge (8 Logic Processor)";
+                ram = "32GB";
+                disk = "300GB";
+                diskIo = "25MiB/s";
             }
             else if (total >= 3001 && total <= 6000) {
-                string = "<br/>c5.4xlarge (16 vCPU / 32GB RAM)";
+                string = "";
+                cpu = "c5.4xlarge (16 Logic Processor)";
+                ram = "32GB";
+                disk = "300GB";
+                diskIo = "35MiB/s";
             }
             else if (total >= 6001 && total <= 10000) {
-                string = "<br/>c5.9xlarge (36 vCPU / 72GB RAM)";
+                string = "";
+                cpu = "c5.9xlarge (36 Logic Processor)";
+                ram = "72GB";
+                disk = "600GB";
+                diskIo = "45MiB/s";
             }
             else {
                 string = "<br/>No data found";
@@ -191,26 +239,50 @@ function validationScale() {
 
         } else if (platformText === "Microsoft Azure") {
             if (total >= 1 && total <= 100) {
-                string = "<br/>DS11_v2 (2 vCPU / 14GB RAM)<br/>or<br />D4s_v3 (4 vCPU / 16GB RAM)";
+                string = "";
+                cpu = "DS11_v2 (2 Logic Processor)<br/>or<br />D4s_v3 (4 Logic Processor)";
+                ram = "14GB<br />or<br />16GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 101 && total <= 500) {
-                string = "<br/>D4s_v3 (4 vCPU / 16GB RAM)";
+                string = "";
+                cpu = "D4s_v3 (4 Logic Processor)";
+                ram = "16GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 501 && total <= 1024) {
-                string = "<br/>D8s_v3 (8 vCPU / 32GB RAM)";
+                string = "";
+                cpu = "D8s_v3 (8 Logic Processor)";
+                ram = "32GB";
+                disk = "250GB";
+                diskIo = "20MiB/s";
             }
             else {
                 string = "<br/>No data found";
             }
         } else if (platformText === "Amazon Web Service") {
             if (total >= 1 && total <= 100) {
-                string = "<br/>r5.large (2 vCPU / 16GB RAM)";
+                string = "";
+                cpu = "r5.large (2 Logic Processor)";
+                ram = "16GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 101 && total <= 500) {
-                string = "<br/>m5.xlarge (4 vCPU / 16GB RAM)";
+                string = "";
+                cpu = "m5.xlarge (4 Logic Processor)";
+                ram = "16GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 501 && total <= 1024) {
-                string = "<br/>m5.2xlarge (8 vCPU / 32GB RAM)";
+                string = "";
+                cpu = "m5.2xlarge (8 Logic Processor)";
+                ram = "32GB";
+                disk = "250GB";
+                diskIo = "20MiB/s";
             }
             else {
                 string = "<br/>No data found";
