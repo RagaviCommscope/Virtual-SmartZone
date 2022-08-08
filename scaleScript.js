@@ -10,9 +10,9 @@ info.innerHTML = string;
 
 var platform = document.getElementById("platform");
 
-if(window.innerWidth<=650){
+if (window.innerWidth <= 650) {
     platform = document.getElementById("smPlatform");
-    div1=form.getElementsByTagName("div")[7];
+    div1 = form.getElementsByTagName("div")[7];
 }
 
 console.log(platform);
@@ -22,16 +22,19 @@ function validationScale() {
     var ap = div1.getElementsByTagName("input")[0].value;
     var switches = div1.getElementsByTagName("input")[1].value;
 
-    if (ap == "") {
-        document.getElementsByClassName("fw-bold")[0].style.display = "block";
-        document.getElementById("para").innerHTML = "Ap Count Required";
-        return false;
+    if (ap == "" && switches == "") {
+        ap = "null";
+        switches = "null";
+        total = 0;
     }
     else {
-        total = parseInt(ap);
-        document.getElementById("para").innerHTML = "";
-        document.getElementsByClassName("fw-bold")[0].style.display = "none";
-        if (ap != "" && switches != "") {
+        if (ap != "") {
+            total = parseInt(ap);
+        }
+        else {
+            ap = "null";
+        }
+        if (switches != "") {
             total += (parseInt(switches) * 5);
         }
         else {
@@ -47,32 +50,66 @@ function validationScale() {
     result[3].innerHTML = "Ap Count : " + ap;
     result[4].innerHTML = "Switch Count : " + switches;
 
+    var cpu = "", ram = "", disk = "", diskIo = "";
+
     if ($("#highScale").prop("checked")) {
         result[1].innerHTML = "vSZ Model : High Scale (vSZ-H)";
         if (platformText === "VMware/Hyper-V/KVM") {
             if (total >= 1 && total <= 100) {
-                string = "<br/>CPU : 2-4   RAM : 13GB   Min.DiskSize : 150GB";
+                string = "";
+                cpu = "2-4<sup>[3]</sup> Logic Processor";
+                ram = "13GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 101 && total <= 500) {
-                string = "<br/>CPU : 4   RAM : 16GB   Min.DiskSize : 150GB";
+                string = "";
+                cpu = "4 Logic Processor";
+                ram = "16GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 501 && total <= 1000) {
-                string = "<br/>CPU : 4-6   RAM : 18GB   Min.DiskSize : 150GB";
+                string = "";
+                cpu = "4-6<sup>[4]</sup> Logic Processor";
+                ram = "18GB";
+                disk = "150GB";
+                diskIo = "20MiB/s";
             }
             else if (total >= 1001 && total <= 2500) {
-                string = "<br/>CPU : 6   RAM : 22GB   Min.DiskSize : 300GB";
+                string = "";
+                cpu = "6 Logic Processor";
+                ram = "22GB";
+                disk = "300GB";
+                diskIo = "25MiB/s";
             }
             else if (total >= 2501 && total <= 3000) {
-                string = "<br/>CPU : 8   RAM : 24GB   Min.DiskSize : 300GB";
+                string = "";
+                cpu = "8 Logic Processor";
+                ram = "24GB";
+                disk = "300GB";
+                diskIo = "30MiB/s";
             }
             else if (total >= 3001 && total <= 5000) {
-                string = "<br/>CPU : 12   RAM : 28GB   Min.DiskSize : 300GB";
+                string = "";
+                cpu = "12 Logic Processor";
+                ram = "28GB";
+                disk = "300GB";
+                diskIo = "30MiB/s";
             }
             else if (total >= 5001 && total <= 6000) {
-                string = "<br/>CPU : 16   RAM : 30GB   Min.DiskSize : 300GB";
+                string = "";
+                cpu = "16 Logic Processor";
+                ram = "30GB";
+                disk = "300GB";
+                diskIo = "35MiB/s";
             }
             else if (total >= 6001 && total <= 10000) {
-                string = "<br/>CPU : 24   RAM : 48GB   Min.DiskSize : 600GB";
+                string = "";
+                cpu = "24 Logic Processor";
+                ram = "48GB";
+                disk = "600GB";
+                diskIo = "45MiB/s";
             }
             else {
                 string = "<br/>No data found";
@@ -128,13 +165,25 @@ function validationScale() {
         result[1].innerHTML = "vSZ Model : Essential Scale (vSZ-E)";
         if (platformText === "VMware/Hyper-V/KVM") {
             if (total >= 1 && total <= 100) {
-                string = "<br/>CPU : 2-4   RAM : 13GB   Min.DiskSize : 150GB";
+                string = "";
+                cpu = "2-4<sup>[3]</sup> Logic Processor";
+                ram = "13GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 101 && total <= 500) {
-                string = "<br/>CPU : 4   RAM : 16GB   Min.DiskSize : 150GB";
+                string = "";
+                cpu = "4 Logic Processor";
+                ram = "16GB";
+                disk = "150GB";
+                diskIo = "15MiB/s";
             }
             else if (total >= 501 && total <= 1024) {
-                string = "<br/>CPU : 8   RAM : 20GB   Min.DiskSize : 250GB";
+                string = "";
+                cpu = "8 Logic Processor";
+                ram = "20GB";
+                disk = "250GB";
+                diskIo = "20MiB/s";
             }
             else {
                 string = "<br/>No data found";
@@ -172,8 +221,20 @@ function validationScale() {
     display();
 
     function display() {
+        info.innerHTML = "<b>Virtual SmartZone Minimum Requirements :</b>";
+        var table = document.getElementsByTagName("table")[0];
+        if (string != "") {
+            table.style.display = "none";
+            info.innerHTML += string;
+        }
+        else{
+            table.style.display = "block";
+            table.getElementsByTagName("td")[0].innerHTML=cpu;
+            table.getElementsByTagName("td")[1].innerHTML=ram;
+            table.getElementsByTagName("td")[2].innerHTML=disk;
+            table.getElementsByTagName("td")[3].innerHTML=diskIo;
+        }
         document.getElementsByClassName("card")[0].style.display = "block";
-        info.innerHTML = "<b>Virtual SmartZone Minimum Requirements :</b>"+string;
     }
 
     document.getElementById("scaleForm").reset();
